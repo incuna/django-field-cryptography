@@ -23,3 +23,11 @@ class AESField(models.CharField):
             return aes.base64_decrypt(value)
         except:
             return value
+
+try:
+    from south.modelsinspector import add_introspection_rules
+except ImportError:
+    pass
+else:
+    add_introspection_rules([], ["^django_simple_aes_field\.fields\.AESField"])
+
