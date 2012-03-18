@@ -20,7 +20,7 @@ Add `django-simple-aes-field` to your `INSTALLED_APPS`:
 Usage
 -----
 
-    from django_simple_aes_field import AESField
+    from django_simple_aes_field.fields import AESField
 
     class MyModel(models.Model):
         my_secret_field = AESField()
