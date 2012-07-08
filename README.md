@@ -13,7 +13,7 @@ Add `django-simple-aes-field` to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         ...
-        'countries',
+        'django_simple_aes_field',
         ...
     )
 
