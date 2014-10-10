@@ -9,6 +9,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     version=version,
+    license='BSD',
     description='A SimpleAES encoded field for Django.',
     install_requires=('SimpleAES>=0.2',),
     classifiers=(
