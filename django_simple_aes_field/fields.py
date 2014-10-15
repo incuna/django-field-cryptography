@@ -16,11 +16,11 @@ class AESField(models.CharField):
         return super(AESField, self).__init__(*args, **kwargs)
 
     def get_prep_value(self, value):
-        return aes.base64_encrypt(str(value))
+        return aes.base64_encrypt(value.encode("utf-8"))
 
     def to_python(self, value):
         try:
-            return aes.base64_decrypt(value)
+            return aes.base64_decrypt(value).decode("utf-8")
         except:
             return value
 
