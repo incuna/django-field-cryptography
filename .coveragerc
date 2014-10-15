@@ -1,0 +1,3 @@
+[run]
+source = django_simple_aes_field
+omit = *migrations*, *tests*
