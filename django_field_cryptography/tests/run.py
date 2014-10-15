@@ -9,7 +9,7 @@ from django.conf import settings
 
 settings.configure(
     DATABASES={
-        'default': dj_database_url.config(default='postgres://localhost/django_field_cryptography'),
+        'default': dj_database_url.config(default='postgres://localhost/encrypted_field'),
     },
     INSTALLED_APPS=('django_field_cryptography.tests',),
     MIDDLEWARE_CLASSES = (),
