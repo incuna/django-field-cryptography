@@ -5,13 +5,13 @@ version = '0.1.3'
 
 
 setup(
-    name='django-simple-aes-field',
+    name='django-field-cryptography',
     packages=find_packages(),
     include_package_data=True,
     version=version,
     license='BSD',
-    description='A SimpleAES encoded field for Django.',
-    install_requires=('SimpleAES>=0.2',),
+    description='An encrypted field for Django.',
+    install_requires=('cryptography>=0.6,<0.7',),
     classifiers=(
         'Development Status :: 4 - Beta',
         'Framework :: Django',
@@ -24,5 +24,5 @@ setup(
     ),
     author='Incuna Ltd',
     author_email='admin@incuna.com',
-    url='https://github.com/incuna/django-simple-aes-field',
+    url='https://github.com/incuna/django-field-cryptography',
 )

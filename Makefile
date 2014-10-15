@@ -9,5 +9,5 @@ release:
 	python setup.py register sdist bdist_wheel upload
 
 test:
-	@coverage run ./django_simple_aes_field/tests/run.py
+	@coverage run ./django_field_cryptography/tests/run.py
 	@coverage report --show-missing

@@ -3,12 +3,17 @@
 import sys
 
 from colour_runner.django_runner import ColourRunnerMixin
+import dj_database_url
 from django.conf import settings
 
 
 settings.configure(
-    INSTALLED_APPS=(),
+    DATABASES={
+        'default': dj_database_url.config(default='postgres://localhost/django_field_cryptography'),
+    },
+    INSTALLED_APPS=('django_field_cryptography.tests',),
     MIDDLEWARE_CLASSES = (),
+    FERNET_KEY=b'pLw0TKXzFxIQTuuDZl4sXpkJkmDLbvpfVzl5-FHgayE=',
 )
 
 import django
@@ -23,6 +28,6 @@ class TestRunner(ColourRunnerMixin, DiscoverRunner):
 
 
 test_runner = TestRunner(verbosity=1)
-failures = test_runner.run_tests(['django_simple_aes_field'])
+failures = test_runner.run_tests(['django_field_cryptography'])
 if failures:
     sys.exit(1)
