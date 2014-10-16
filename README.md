@@ -1,7 +1,14 @@
 # Django SimpleAES Field [![Build Status](https://travis-ci.org/incuna/django-simple-aes-field.svg?branch=master)](https://travis-ci.org/incuna/django-simple-aes-field)
 
-Provides a simple django `CharField` subclass which encodes itself using
-[SimpleAES](https://github.com/nvie/SimpleAES/) in the database.
+Provides a simple django `TextField` subclass which encodes itself using
+[cryptography](https://github.com/pyca/cryptography) in the database.
+
+`AESField` uses [Fernet](https://cryptography.io/en/latest/fernet/) which is
+an implementation of symmetric cryptography.
+
+`Fernet` uses `AES` in `CBC` mode and `HMAC` for authentication.
+See [implementation](https://cryptography.io/en/latest/fernet/#implementation)
+for more details.
 
 If you installed `v0.1.2` or lower, newer versions are not backward compatible as
 we've changed the encryption method.

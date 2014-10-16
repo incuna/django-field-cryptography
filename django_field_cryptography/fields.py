@@ -8,11 +8,11 @@ from cryptography.fernet import Fernet
 fernet = Fernet(settings.FERNET_KEY)
 
 
-class EncryptedTextField(models.CharField):
-    """A CharField encrypted with Fernet (AES).
+class EncryptedTextField(models.TextField):
+    """A TextField encrypted with Fernet (AES).
 
-    AESField rely on `Fernet` from `cryptography` to ensure symetric encryption.
-    This field is compatible with South migrations.
+    EncryptedTextField rely on `Fernet` from `cryptography` to ensure symetric
+    encryption. This field is compatible with South migrations.
     """
     def get_prep_value(self, value):
         return fernet.encrypt(force_bytes(value))
