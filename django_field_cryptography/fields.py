@@ -9,6 +9,11 @@ fernet = Fernet(settings.FERNET_KEY)
 
 
 class EncryptedTextField(models.CharField):
+    """Encrypted fields.
+
+    AESField rely on `Fernet` from `cryptography` to ensure symetric encryption.
+    This field is compatible with South migrations.
+    """
     def get_prep_value(self, value):
         return fernet.encrypt(force_bytes(value))
 
@@ -19,6 +24,6 @@ class EncryptedTextField(models.CharField):
     def south_field_triple(self):
         """Returns a suitable description of this field for South."""
         from south.modelsinspector import introspector
-        field_class = '.'.format(self.__class__.__module__, self.__class__.name__)
-        args, kwargs = introspector(self.translated_field)
+        field_class = '{}.{}'.format(self.__class__.__module__, self.__class__.__name__)
+        args, kwargs = introspector(self)
         return (field_class, args, kwargs)
