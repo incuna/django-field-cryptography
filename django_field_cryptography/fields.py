@@ -9,7 +9,7 @@ fernet = Fernet(settings.FERNET_KEY)
 
 
 class EncryptedTextField(models.CharField):
-    """Encrypted fields.
+    """A CharField encrypted with Fernet (AES).
 
     AESField rely on `Fernet` from `cryptography` to ensure symetric encryption.
     This field is compatible with South migrations.
