@@ -3,6 +3,17 @@
 Provides a simple django `CharField` subclass which encodes itself using
 [SimpleAES](https://github.com/nvie/SimpleAES/) in the database.
 
+If you installed `v0.1.2` or lower, newer versions are not backward compatible as
+we've changed the encryption method.
+
+Migrating from `v0.1.2` or lower would involve to:
+
+  - remove AESField from your model;
+  - decrypt and save the data in a temporary table;
+  - update this library;
+  - create a migration to save data from the temporary table to your model;
+  - delete the table;
+
 ## Installation
 
 Install with your favourite package manager:
