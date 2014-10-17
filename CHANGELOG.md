@@ -1,4 +1,4 @@
-## Upcoming
+## v1.0.0
 
  - Add tests
  - Replace [SimpleAES](https://github.com/nvie/SimpleAES) with
