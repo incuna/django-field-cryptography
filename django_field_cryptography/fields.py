@@ -22,6 +22,8 @@ class EncryptedTextField(with_metaclass(models.SubfieldBase, models.TextField)):
         return fernet.encrypt(force_bytes(value))
 
     def to_python(self, value):
+        """to_python is called every time an instance of the field is
+        assigned a value and when retrieving the value from the database."""
         try:
             value = fernet.decrypt(force_bytes(value))
         except InvalidToken:
