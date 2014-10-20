@@ -32,5 +32,8 @@ class TestModel(TestCase):
     def test_value(self):
         value = 'Encrypt me'
         factories.DummyModelFactory.create(aes_field=value)
+
+        # requerying the model allow us to call `to_python` to test if the
+        # decryption is handled properly.
         dummy_model = models.DummyModel.objects.get()
         self.assertEqual(dummy_model.aes_field, value)

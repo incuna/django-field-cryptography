@@ -16,14 +16,20 @@ class EncryptedTextField(with_metaclass(models.SubfieldBase, models.TextField)):
     encryption. This field is compatible with South migrations.
     """
     def db_type(self, connection):
+        """Value stored in the database is hexadecimal."""
         return 'bytea'
 
     def get_prep_value(self, value):
         return fernet.encrypt(force_bytes(value))
 
     def to_python(self, value):
-        """to_python is called every time an instance of the field is
-        assigned a value and when retrieving the value from the database."""
+        """Returns unencrypted or decrypted value."""
+
+        # `to_python` is called either when assigning a value to the model or
+        # when retrieving a value from it. It should be either be able to return
+        # the string assigned or to decrypt it. This behavior (from django) is
+        # not ideal but will change in the future see
+        # https://docs.djangoproject.com/en/dev/howto/custom-model-fields/#converting-values-to-python-objects
         try:
             value = fernet.decrypt(force_bytes(value))
         except InvalidToken:
