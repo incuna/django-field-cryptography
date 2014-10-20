@@ -23,13 +23,15 @@ class EncryptedTextField(with_metaclass(models.SubfieldBase, models.TextField)):
         return fernet.encrypt(force_bytes(value))
 
     def to_python(self, value):
-        """Returns unencrypted or decrypted value."""
+        """
+        Returns unencrypted or decrypted value.
 
-        # `to_python` is called either when assigning a value to the model or
-        # when retrieving a value from it. It should be either be able to return
-        # the string assigned or to decrypt it. This behavior (from django) is
-        # not ideal but will change in the future see
-        # https://docs.djangoproject.com/en/dev/howto/custom-model-fields/#converting-values-to-python-objects
+        `to_python` is called either when assigning a value to the model or
+        when retrieving a value from it. It should be either be able to return
+        the string assigned or to decrypt it. This behavior (from django) is
+        not ideal but will change in the future see
+        https://docs.djangoproject.com/en/dev/howto/custom-model-fields/#converting-values-to-python-objects
+        """
         try:
             value = fernet.decrypt(force_bytes(value))
         except InvalidToken:
