@@ -1,3 +1,9 @@
+## Upcoming
+
+ - Add `metaclass` for `SubfieldBase` to call `to_python` when getting value
+ back from the database.
+
+
 ## v1.0.0
 
  - Add tests
