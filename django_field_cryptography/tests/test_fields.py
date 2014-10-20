@@ -3,7 +3,7 @@
 from django.test import TestCase
 
 from .. import fields
-from . import factories
+from . import factories, models
 
 
 class TestField(TestCase):
@@ -31,5 +31,6 @@ class TestField(TestCase):
 class TestModel(TestCase):
     def test_value(self):
         value = 'Encrypt me'
-        dummy_model = factories.DummyModelFactory.create(aes_field=value)
+        factories.DummyModelFactory.create(aes_field=value)
+        dummy_model = models.DummyModel.objects.get()
         self.assertEqual(dummy_model.aes_field, value)
