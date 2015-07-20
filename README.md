@@ -56,7 +56,7 @@ FERNET_KEY = b'your_key...'
 ## Usage
 
 ```python
-    from django_cryptography.fields import EncryptedTextField
+    from django_field_cryptography.fields import EncryptedTextField
 
     class MyModel(models.Model):
         my_secret_field = EncryptedTextField()
