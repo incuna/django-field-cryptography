@@ -2,7 +2,7 @@
 colour-runner==0.0.4
 coverage==3.7.1
 dj_database_url==0.3.0
-django==1.7.0
+django==2.2.24
 factory-boy==2.4.1
 psycopg2==2.5.4
 south==1.0.0
